@@ -8,7 +8,7 @@ use Tests\TestCase;
 class CreateUserTest extends TestCase
 {
     use DatabaseMigrations;
-    
+
     public function test_create_a_user(): void
     {
 
