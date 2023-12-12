@@ -31,4 +31,19 @@ class TodosController extends Controller
 
         return response()->json(['message' => 'Todo created successfully', 'data' => $todo], 200);
     }
+
+    public function update(Request $request, $id)
+    {
+        $payload = $request->validate([
+            'title' => 'required|string',
+        ]);
+
+        $user = User::find(Auth::id());
+
+        $todo = $user->todos()->find($id);
+
+        $todo->update($payload);
+
+        return response()->json(['message' => 'Todo updated successfully', 'data' => $todo], 200);
+    }
 }
