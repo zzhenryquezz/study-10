@@ -46,4 +46,15 @@ class TodosController extends Controller
 
         return response()->json(['message' => 'Todo updated successfully', 'data' => $todo], 200);
     }
+
+    public function destroy($id)
+    {
+        $user = User::find(Auth::id());
+
+        $todo = $user->todos()->find($id);
+
+        $todo->delete();
+
+        return response()->json(['message' => 'Todo deleted successfully'], 200);
+    }
 }
