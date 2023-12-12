@@ -24,4 +24,4 @@ Route::post('/sign-up', [AuthController::class, 'signUp']);
 
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::middleware('auth:sanctum')->get('/todos', [TodosController::class, 'index']);
+Route::middleware('auth:sanctum')->resource('todos', TodosController::class);

@@ -27,7 +27,6 @@ class ListTodoTest extends TestCase
 
         $response->assertStatus(200);
 
-        $response->assertJsonFragment($pagination->toArray());
-        
+        $response->assertJsonFragment($pagination->toArray());        
     }
 }

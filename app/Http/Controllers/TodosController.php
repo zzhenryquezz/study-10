@@ -16,4 +16,19 @@ class TodosController extends Controller
 
         return response()->json($pagination, 200);
     }
+
+    public function store(Request $request)
+    {
+        $payload = $request->validate([
+            'title' => 'required|string',
+        ]);
+
+        $payload['user_id'] = Auth::id();
+
+        $user = User::find(Auth::id());
+
+        $todo = $user->todos()->create($payload);
+
+        return response()->json(['message' => 'Todo created successfully', 'data' => $todo], 200);
+    }
 }
